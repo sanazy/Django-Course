@@ -1,0 +1,41 @@
+@font-face {
+    font-family: IranianSans;
+    src: url("../fonts/IranianSans.ttf");
+}
+
+body {
+    direction: rtl;
+    /*font-family: IranianSans;*/
+}
+
+#container h2 {
+    background-color: #860002;
+    color: #ffffff;
+    height: 100px;
+}
+
+#toolbar {
+    background-color: #393939;
+    color: #ffffff;
+    min-height: 30px;
+}
+
+#toolbar h4 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+#toolbar a.btn {
+    font-size: 0.7em;
+}
+
+#toolbar .dropdown-item {
+    font-size: 0.7em;
+}
+
+
+#footer {
+    background-color: #860002;
+    color: #ffffff;
+    height: 100px;
+}

@@ -1,0 +1,111 @@
+{% extends "ticketing/base_page.html" %}
+{% load static %}
+
+{% block title %}
+    خرید بلیت
+    {{ movie.name }}
+{% endblock %}
+
+{% block toolbar_title %}
+    <i class="fa fa-film"></i>
+    {{ movie.name }}
+{% endblock %}
+
+{% block toolbar_buttuns %}
+    {{ block.super }}
+    <a class="btn btn-light py-1 px-2"
+       href="{% url 'ticketing:ticket_list' %} ">
+        <i class="fa fa-list"></i>
+        فهرست سانس ها
+    </a>
+{% endblock %}
+
+{% block main_content %}
+    <div class="row py-3">
+        <div class="col-8 item-details">
+            <div class=""row px-3>
+                <div class="col-3">
+                    <small class="text-muted">
+                        نام فیلم:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {{ movie.name }}
+                </div>
+
+                <div class="w-100 my-1"></div>
+
+                <div class="col-3">
+                    <small class="text-muted">
+                        نام سینما:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {{ cinema.name }}
+                </div>
+
+                <div class="w-100 my-1"></div>
+
+                <div class="col-3">
+                    <small class="text-muted">
+                        شروع سانس:
+                    </small>
+                </div>
+                <div class="col-9">
+
+                </div>
+
+                <div class="w-100 my-1"></div>
+
+                <div class="col-3">
+                    <small class="text-muted">
+                        آدرس سینما:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {{ cinema.address }}
+                </div>
+
+                <div class="w-100 my-1"></div>
+
+                <div class="col-3">
+                    <small class="text-muted">
+                        قیمت بلیت:
+                    </small>
+                </div>
+                <div class="col-4">
+                    {{ showtime.price }}
+                    تومان
+                </div>
+                <div class="col-5">
+                    <form action="" method="post" class="form-inline">
+                        {% csrf_token %}
+                        <select name="seat_count" class="form-control form-control-sm ml-2">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <buttun type="submit" class="btn btn-xs btn-success my-1"
+                                href="#">
+                            خرید بلیت
+                        </buttun>
+                    </form>
+                </div>
+                {% if error %}
+                    <div class="w-100 my-1"></div>
+                    <span class="col-12 alert alert-danger small p-2">
+                        <i class="fa fa-exclamation"></i>
+                        {{ error }}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "ticketing/base_page.html" %}
+{% load static %}
+
+{% block title %}
+    مشاهده بلیت
+{% endblock %}
+
+{% block toolbar_title %}
+    <i class="fa fa-ticket"></i>
+    مشاهده بلیت
+{% endblock %}
+
+{% block toolbar_buttuns %}
+    <a class="btn btn-warning py-1 px-2"
+       href="{% url 'ticketing:ticket_list' %} ">
+        <i class="fa fa-list"></i>
+        فهرست بلیت ها
+    </a>
+{% endblock %}
+
+{% block main_content %}
+    <div class="row py-3">
+        <div class="col-8 item-details">
+            <div class="row px-3">
+                <div class="col-3">
+                    <small class="text-muted">
+                        <i class="fa fa-clock"></i>
+                        زمان خرید:
+                    </small>
+                </div>
+                <div class="col-4">
+                    {{ ticket.order_time|date:"Y/n/j - H:i" }}
+                </div>
+                <div class="col-3">
+                    <small class="text-muted">
+                        <i class="fa fa-chair"></i>
+                        تعداد صندلی:
+                    </small>
+                </div>
+                <div class="col-2">
+                    {{ ticket.seat_count }}
+                </div>
+
+                <div class="w-100 my-1"></div>
+
+                <div class="col-3">
+                    <small class="text-muted">
+                        <i class="fa fa-film"></i>
+                        نام فیلم:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {{ ticket.showtime.movie.name }}
+                </div>
+
+                <div class="w-100 my-1"></div>
+
+                <div class="col-3">
+                    <small class="text-muted">
+                        <i class="fa fa-building"></i>
+                        نام سینما:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {{ ticket.showtime.cinema.name }}
+                </div>
+
+                <div class="w-100 my-1"></div>
+
+                <div class="col-3">
+                    <small class="text-muted">
+                        <i class="fa fa-clock"></i>
+                        شروع سانس:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {{ ticket.showtime.start_time|date:"1 Y/n/j H:i" }}
+                </div>
+
+                <div class="w-100 my-1"></div>
+
+                <div class="col-12">
+                    <small class="text-muted">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        لطفا 30 دقیقه قبل از نمایش فیلم در سینما حضور داشته باشید.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 text-center">
+        <img class="item-image" src="{% static "ticketing/images/qrcode.png" %}">
+    </div>
+{% endblock %}
